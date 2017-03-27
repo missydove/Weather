@@ -1,22 +1,35 @@
-// YOUR SCRIPTS GO HERE
-// https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js
-
 $.simpleWeather({
-  location: 99216,
-  unit: 'f',
-  success: function(weather){
-      
-      // Weather Check
+    location: 99216,
+    unit: 'f',
+    success: function(weather) {
+      // Entire weather object
       console.log(weather);
-    
+      
       // Display Data
-      $('.city').text(weather.city);
-      $('.state').text(weather.region);
       $('.temp').text(weather.temp);
-      $('.thumb img').attr('src', weather.image);
+      $('.city').text(weather.city);
+      $('img').attr('src', weather.image);
+      
+      // Condition Code
+      // Reference Condition Codes
+      // https://developer.yahoo.com/weather/documentation.html#codes
+      console.log(weather.code);
+      
     
-    },
-  error:  function(error){
-      console.log('No Weather Found'); 
-    }
+// Get and store Geo Location lat/long coordinates
+navigator.geolocation.getCurrentPosition( 
+  
+  function(position) {
+  
+  // wait a few seconds to receive location
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+  
+  console.log( lat, long); 
+
+  
 });
+
+
+
+
